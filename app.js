@@ -368,3 +368,83 @@ styleElement.textContent = `
   }
 `;
 document.head.appendChild(styleElement);
+
+// Initialize when DOM content is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+  initializeLucide();
+  initializeMap();
+  setupEventListeners();
+  fetchHotelData();
+  startRefreshTimer();
+});
+
+// Refresh icons
+function initializeLucide() {
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+}
+
+// Leaflet Map Setup
+function initializeMap() {
+  // Center map on Element Hotel Downtown Minneapolis
+  map = L.map('map', {
+    zoomControl: true,
+    scrollWheelZoom: true
+  }).setView(ELEMENT_COORDS, 15);
+
+  // CartoDB Positron - Sleek, minimalist design
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 20
+  }).addTo(map);
+
+  markersGroup = L.layerGroup().addTo(map);
+}
+
+// Attach control event listeners
+function setupEventListeners() {
+  // Price view mode toggles
+  document.getElementById('btn-nightly').addEventListener('click', (e) => {
+    setPriceMode('nightly', e.target);
+  });
+  document.getElementById('btn-total').addEventListener('click', (e) => {
+    setPriceMode('total', e.target);
+  });
+
+  // Sort dropdown changes
+  document.getElementById('sort-select').addEventListener('change', (e) => {
+    state.sortBy = e.target.value;
+    renderSidebar();
+  });
+
+  // Primary source filters
+  const sourceButtons = document.querySelectorAll('#source-filters .source-btn');
+  sourceButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      sourceButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.selectedSource = btn.dataset.source;
+      renderSidebar();
+      renderMapMarkers();
+    });
+  });
+
+  // Manual Refresh Button
+  const refreshBtn = document.getElementById('refresh-btn');
+  refreshBtn.addEventListener('click', () => {
+    const icon = document.getElementById('refresh-icon');
+    icon.classList.add('spinning');
+    refreshBtn.disabled = true;
+
+    fetchHotelData().finally(() => {
+      // Small timeout to show spinning animation feedback
+      setTimeout(() => {
+        icon.classList.remove('spinning');
+        refreshBtn.disabled = false;
+      }, 800);
+      resetRefreshTimer();
+    });
+  });
+}
