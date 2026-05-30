@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minneapolis Downtown Hotel Price Monitor</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+        crossorigin="" />
+        
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Top Nav Header -->
+    <header class="main-header">
+      <div class="header-logo">
+        <div class="icon-wrapper">
+          <i data-lucide="hotel" class="header-icon"></i>
+        </div>
+        <div>
+          <h1>Hotel Price Monitor</h1>
+          <p class="subtitle">Minneapolis Downtown (within 2 miles of Element Hotel)</p>
+        </div>
+      </div>
+      
+      <div class="header-meta">
+        <div class="date-badge">
+          <i data-lucide="calendar" class="meta-icon"></i>
+          <div>
+            <span class="badge-label">Stay Dates</span>
+            <span class="badge-val">Jun 6 – Jun 11, 2026</span>
+          </div>
+        </div>
+        <div class="nights-badge">
+          <span class="nights-val">5 Nights</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Control Center Panel -->
+    <section class="controls-panel">
+      <div class="control-group">
+        <label for="price-mode"><i data-lucide="dollar-sign"></i> View Option</label>
+        <div class="toggle-switch">
+          <button id="btn-nightly" class="toggle-btn active">Nightly</button>
+          <button id="btn-total" class="toggle-btn">Total</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label for="sort-select"><i data-lucide="arrow-up-down"></i> Sort By</label>
+        <select id="sort-select" class="custom-select">
+          <option value="distance">Distance from Element</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+        </select>
+      </div>
+
+      <div class="control-group active-source-group">
+        <label><i data-lucide="filter"></i> Primary Source</label>
+        <div class="toggle-switch" id="source-filters">
+          <button class="source-btn active" data-source="direct">Direct</button>
+          <button class="source-btn" data-source="booking">Booking</button>
+          <button class="source-btn" data-source="expedia">Expedia</button>
+        </div>
+      </div>
+
+      <div class="refresh-controls">
+        <div class="refresh-timer" id="timer-display">
+          <div class="timer-ring-container">
+            <svg class="timer-ring" width="28" height="28">
+              <circle class="timer-ring-circle-bg" stroke="rgba(255,255,255,0.08)" stroke-width="3" fill="transparent" r="11" cx="14" cy="14"/>
+              <circle id="timer-progress" class="timer-ring-circle" stroke="var(--accent-color)" stroke-width="3" fill="transparent" r="11" cx="14" cy="14" stroke-dasharray="69.1" stroke-dashoffset="0"/>
+            </svg>
+            <span class="timer-countdown" id="timer-text">20</span>
+          </div>
+          <span class="timer-label">Auto-refreshes in <strong id="timer-string">20:00</strong></span>
+        </div>
+        
+        <button id="refresh-btn" class="primary-btn">
+          <i data-lucide="rotate-cw" id="refresh-icon"></i>
+          <span>Refresh Rates</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="dashboard-content">
+      
+      <!-- Left side: Map View -->
+      <div class="map-wrapper">
+        <div id="map"></div>
+        <div class="map-legend">
+          <div class="legend-item"><span class="marker-dot origin-dot"></span> Element Hotel (Origin)</div>
+          <div class="legend-item"><span class="marker-dot hotel-dot"></span> Nearby Hotels</div>
+        </div>
+      </div>
+
+      <!-- Right side: Hotel List Sidebar -->
+      <div class="sidebar-wrapper">
+        <div class="sidebar-header">
+          <h2>Nearby Hotels <span id="hotel-count" class="count-badge">0</span></h2>
+          <span class="radius-indicator"><i data-lucide="navigation"></i> 2-mile radius</span>
+        </div>
+        
+        <div id="hotels-list" class="hotels-list">
+          <!-- Loading state placeholder -->
+          <div class="loading-state">
+            <div class="spinner"></div>
+            <p>Fetching rates from sources...</p>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Leaflet Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+          crossorigin=""></script>
+          
+  <!-- Custom Application Script -->
+  <script src="app.js"></script>
+</body>
+</html>
