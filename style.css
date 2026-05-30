@@ -746,6 +746,21 @@ body {
   animation: spin 1s ease-in-out infinite;
 }
 
+.source-badge {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: var(--accent-success);
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  vertical-align: middle;
+  display: inline-block;
+  margin-left: 6px;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.05);
+}
+
 /* Phone/Tablet Media Queries overrides */
 @media (max-width: 650px) {
   body {
