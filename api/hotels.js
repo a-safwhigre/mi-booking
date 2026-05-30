@@ -14,7 +14,7 @@ const HOTELS_DATA = [
     prices: { direct: 159, booking: 165, expedia: 167 },
     directUrl: 'https://www.marriott.com/en-us/hotels/mspel-element-minneapolis-downtown/overview/',
     bookingSlug: 'element-minneapolis-downtown',
-    expediaSlug: 'Minneapolis-Hotels-Element-Minneapolis-Downtown.h42953335'
+    expediaSlug: 'Minneapolis-Hotels-Element-Minneapolis-Downtown.h35252873'
   },
   {
     id: 'towneplace',
