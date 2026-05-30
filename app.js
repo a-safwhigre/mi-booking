@@ -114,8 +114,8 @@ function renderSidebar() {
     const directUrl = hotel.directUrl || '#';
     // Link directly to the specific hotel on Booking.com for the dates
     const bookingUrl = `https://www.booking.com/hotel/us/${hotel.bookingSlug}.html?checkin=${state.bookingDates.checkIn}&checkout=${state.bookingDates.checkOut}`;
-    // Link directly to Expedia search query for that specific hotel name for the dates
-    const expediaUrl = `https://www.expedia.com/Hotel-Search?destination=${encodeURIComponent(hotel.name)}&startDate=${state.bookingDates.checkIn}&endDate=${state.bookingDates.checkOut}`;
+    // Link directly to the specific hotel on Expedia for the dates
+    const expediaUrl = `https://www.expedia.com/h${hotel.expediaId}.Hotel-Information?startDate=${state.bookingDates.checkIn}&endDate=${state.bookingDates.checkOut}&adults=1`;
 
     card.innerHTML = `
       <div class="hotel-card-header">
@@ -197,7 +197,7 @@ function renderMapMarkers() {
     
     const directUrl = hotel.directUrl || '#';
     const bookingUrl = `https://www.booking.com/hotel/us/${hotel.bookingSlug}.html?checkin=${state.bookingDates.checkIn}&checkout=${state.bookingDates.checkOut}`;
-    const expediaUrl = `https://www.expedia.com/Hotel-Search?destination=${encodeURIComponent(hotel.name)}&startDate=${state.bookingDates.checkIn}&endDate=${state.bookingDates.checkOut}`;
+    const expediaUrl = `https://www.expedia.com/h${hotel.expediaId}.Hotel-Information?startDate=${state.bookingDates.checkIn}&endDate=${state.bookingDates.checkOut}&adults=1`;
 
     // Custom popup detailing comparison rates
     const popupContent = `

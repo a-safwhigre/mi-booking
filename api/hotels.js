@@ -13,7 +13,8 @@ const HOTELS_DATA = [
     lng: -93.27922,
     prices: { direct: 159, booking: 165, expedia: 167 },
     directUrl: 'https://www.marriott.com/en-us/hotels/mspel-element-minneapolis-downtown/overview/',
-    bookingSlug: 'element-minneapolis-downtown'
+    bookingSlug: 'element-minneapolis-downtown',
+    expediaId: '42953335'
   },
   {
     id: 'towneplace',
@@ -23,7 +24,8 @@ const HOTELS_DATA = [
     lng: -93.27410,
     prices: { direct: 139, booking: 145, expedia: 147 },
     directUrl: 'https://www.marriott.com/en-us/hotels/msplh-towneplace-suites-minneapolis-downtown-north-loop/overview/',
-    bookingSlug: 'towneplace-suites-by-marriott-minneapolis-downtown-north-loop'
+    bookingSlug: 'towneplace-suites-by-marriott-minneapolis-downtown-north-loop',
+    expediaId: '11674470'
   },
   {
     id: 'hewing',
@@ -33,7 +35,8 @@ const HOTELS_DATA = [
     lng: -93.27360,
     prices: { direct: 295, booking: 310, expedia: 314 },
     directUrl: 'https://hewinghotel.com/',
-    bookingSlug: 'hewing'
+    bookingSlug: 'hewing',
+    expediaId: '15730302'
   },
   {
     id: 'lofton',
@@ -43,7 +46,8 @@ const HOTELS_DATA = [
     lng: -93.27480,
     prices: { direct: 185, booking: 192, expedia: 195 },
     directUrl: 'https://www.hilton.com/en/hotels/mspluup-the-lofton-hotel-minneapolis/',
-    bookingSlug: 'chambers-minneapolis'
+    bookingSlug: 'chambers-minneapolis',
+    expediaId: '14713636'
   },
   {
     id: 'fairfield',
@@ -53,7 +57,8 @@ const HOTELS_DATA = [
     lng: -93.27780,
     prices: { direct: 128, booking: 132, expedia: 135 },
     directUrl: 'https://www.marriott.com/en-us/hotels/mspdt-fairfield-inn-and-suites-minneapolis-downtown/overview/',
-    bookingSlug: 'fairfield-inn-suites-by-marriott-minneapolis-downtown'
+    bookingSlug: 'fairfield-inn-suites-by-marriott-minneapolis-downtown',
+    expediaId: '35293297'
   },
   {
     id: 'ac_hotel',
@@ -63,7 +68,8 @@ const HOTELS_DATA = [
     lng: -93.27180,
     prices: { direct: 169, booking: 174, expedia: 177 },
     directUrl: 'https://www.marriott.com/en-us/hotels/mspac-ac-hotel-minneapolis-downtown/overview/',
-    bookingSlug: 'ac-hotel-by-marriott-minneapolis-downtown'
+    bookingSlug: 'ac-hotel-by-marriott-minneapolis-downtown',
+    expediaId: '16766468'
   },
   {
     id: 'radisson_blu',
@@ -73,7 +79,8 @@ const HOTELS_DATA = [
     lng: -93.27140,
     prices: { direct: 172, booking: 178, expedia: 181 },
     directUrl: 'https://www.choicehotels.com/minnesota/minneapolis/radisson-hotels/mn123',
-    bookingSlug: 'radisson-blu-minneapolis-downtown'
+    bookingSlug: 'radisson-blu-minneapolis-downtown',
+    expediaId: '37979'
   },
   {
     id: 'four_seasons',
@@ -83,7 +90,8 @@ const HOTELS_DATA = [
     lng: -93.27110,
     prices: { direct: 450, booking: 465, expedia: 469 },
     directUrl: 'https://www.fourseasons.com/minneapolis/',
-    bookingSlug: 'four-seasons-hotel-minneapolis'
+    bookingSlug: 'four-seasons-hotel-minneapolis',
+    expediaId: '76979603'
   },
   {
     id: 'w_foshay',
@@ -93,7 +101,8 @@ const HOTELS_DATA = [
     lng: -93.27250,
     prices: { direct: 215, booking: 222, expedia: 225 },
     directUrl: 'https://www.marriott.com/en-us/hotels/mspwh-w-minneapolis-the-foshay/overview/',
-    bookingSlug: 'w-minneapolis-the-foshay'
+    bookingSlug: 'w-minneapolis-the-foshay',
+    expediaId: '223293'
   },
   {
     id: 'hilton',
@@ -103,7 +112,8 @@ const HOTELS_DATA = [
     lng: -93.27390,
     prices: { direct: 149, booking: 154, expedia: 156 },
     directUrl: 'https://www.hilton.com/en/hotels/mspmhhh-hilton-minneapolis/',
-    bookingSlug: 'hilton-minneapolis'
+    bookingSlug: 'hilton-minneapolis',
+    expediaId: '3526'
   },
   {
     id: 'hyatt_regency',
@@ -113,7 +123,8 @@ const HOTELS_DATA = [
     lng: -93.27850,
     prices: { direct: 144, booking: 148, expedia: 150 },
     directUrl: 'https://www.hyatt.com/hyatt-regency/en-US/msprm-hyatt-regency-minneapolis',
-    bookingSlug: 'hyatt-regency-minneapolis'
+    bookingSlug: 'hyatt-regency-minneapolis',
+    expediaId: '3527'
   }
 ];
 
@@ -237,6 +248,7 @@ module.exports = async (req, res) => {
         distance: parseFloat(distance.toFixed(2)),
         directUrl: hotel.directUrl,
         bookingSlug: hotel.bookingSlug,
+        expediaId: hotel.expediaId,
         prices: {
           direct: Math.round(baseNightly * 0.96),
           booking: baseNightly,
@@ -296,6 +308,7 @@ function serveFallbackData(res, sourceNote) {
       distance: parseFloat(distance.toFixed(2)),
       directUrl: hotel.directUrl,
       bookingSlug: hotel.bookingSlug,
+      expediaId: hotel.expediaId,
       prices: {
         direct: getOscillatedPrice(hotel.prices.direct, 0),
         booking: getOscillatedPrice(hotel.prices.booking, 3),
