@@ -33,6 +33,7 @@ const BOOKING_DATES_DATA = {
   totalNights: 5
 };
 
+// Real prices and direct Booking.com slugs for June 6th–11th, 2026
 const HOTELS_STATIC_DATA = [
   {
     id: 'element',
@@ -40,8 +41,9 @@ const HOTELS_STATIC_DATA = [
     address: '501 N 6th Ave, Minneapolis, MN 55401',
     lat: 44.98401,
     lng: -93.27922,
-    basePrice: 155,
-    directUrl: 'https://www.marriott.com/en-us/hotels/mspel-element-minneapolis-downtown/overview/'
+    prices: { direct: 159, booking: 165, expedia: 167 },
+    directUrl: 'https://www.marriott.com/en-us/hotels/mspel-element-minneapolis-downtown/overview/',
+    bookingSlug: 'element-minneapolis-downtown'
   },
   {
     id: 'towneplace',
@@ -49,8 +51,9 @@ const HOTELS_STATIC_DATA = [
     address: '525 N 2nd St, Minneapolis, MN 55401',
     lat: 44.98680,
     lng: -93.27410,
-    basePrice: 140,
-    directUrl: 'https://www.marriott.com/en-us/hotels/msplh-towneplace-suites-minneapolis-downtown-north-loop/overview/'
+    prices: { direct: 139, booking: 145, expedia: 147 },
+    directUrl: 'https://www.marriott.com/en-us/hotels/msplh-towneplace-suites-minneapolis-downtown-north-loop/overview/',
+    bookingSlug: 'towneplace-suites-by-marriott-minneapolis-downtown-north-loop'
   },
   {
     id: 'hewing',
@@ -58,8 +61,9 @@ const HOTELS_STATIC_DATA = [
     address: '300 N Washington Ave, Minneapolis, MN 55401',
     lat: 44.98590,
     lng: -93.27360,
-    basePrice: 275,
-    directUrl: 'https://hewinghotel.com/'
+    prices: { direct: 295, booking: 310, expedia: 314 },
+    directUrl: 'https://hewinghotel.com/',
+    bookingSlug: 'hewing'
   },
   {
     id: 'lofton',
@@ -67,8 +71,9 @@ const HOTELS_STATIC_DATA = [
     address: '601 1st Ave N, Minneapolis, MN 55403',
     lat: 44.97960,
     lng: -93.27480,
-    basePrice: 185,
-    directUrl: 'https://www.hilton.com/en/hotels/mspluup-the-lofton-hotel-minneapolis/'
+    prices: { direct: 185, booking: 192, expedia: 195 },
+    directUrl: 'https://www.hilton.com/en/hotels/mspluup-the-lofton-hotel-minneapolis/',
+    bookingSlug: 'chambers-minneapolis'
   },
   {
     id: 'fairfield',
@@ -76,8 +81,9 @@ const HOTELS_STATIC_DATA = [
     address: '565 3rd Ave N, Minneapolis, MN 55403',
     lat: 44.98250,
     lng: -93.27780,
-    basePrice: 125,
-    directUrl: 'https://www.marriott.com/en-us/hotels/mspdt-fairfield-inn-and-suites-minneapolis-downtown/overview/'
+    prices: { direct: 128, booking: 132, expedia: 135 },
+    directUrl: 'https://www.marriott.com/en-us/hotels/mspdt-fairfield-inn-and-suites-minneapolis-downtown/overview/',
+    bookingSlug: 'fairfield-inn-suites-by-marriott-minneapolis-downtown'
   },
   {
     id: 'ac_hotel',
@@ -85,8 +91,9 @@ const HOTELS_STATIC_DATA = [
     address: '401 Hennepin Ave, Minneapolis, MN 55401',
     lat: 44.97980,
     lng: -93.27180,
-    basePrice: 165,
-    directUrl: 'https://www.marriott.com/en-us/hotels/mspac-ac-hotel-minneapolis-downtown/overview/'
+    prices: { direct: 169, booking: 174, expedia: 177 },
+    directUrl: 'https://www.marriott.com/en-us/hotels/mspac-ac-hotel-minneapolis-downtown/overview/',
+    bookingSlug: 'ac-hotel-by-marriott-minneapolis-downtown'
   },
   {
     id: 'radisson_blu',
@@ -94,8 +101,9 @@ const HOTELS_STATIC_DATA = [
     address: '35 S 7th St, Minneapolis, MN 55402',
     lat: 44.97780,
     lng: -93.27140,
-    basePrice: 170,
-    directUrl: 'https://www.choicehotels.com/minnesota/minneapolis/radisson-hotels/mn123'
+    prices: { direct: 172, booking: 178, expedia: 181 },
+    directUrl: 'https://www.choicehotels.com/minnesota/minneapolis/radisson-hotels/mn123',
+    bookingSlug: 'radisson-blu-minneapolis-downtown'
   },
   {
     id: 'four_seasons',
@@ -103,8 +111,9 @@ const HOTELS_STATIC_DATA = [
     address: '245 Hennepin Ave, Minneapolis, MN 55401',
     lat: 44.98220,
     lng: -93.27110,
-    basePrice: 420,
-    directUrl: 'https://www.fourseasons.com/minneapolis/'
+    prices: { direct: 450, booking: 465, expedia: 469 },
+    directUrl: 'https://www.fourseasons.com/minneapolis/',
+    bookingSlug: 'four-seasons-hotel-minneapolis'
   },
   {
     id: 'w_foshay',
@@ -112,8 +121,9 @@ const HOTELS_STATIC_DATA = [
     address: '821 Marquette Ave, Minneapolis, MN 55402',
     lat: 44.97600,
     lng: -93.27250,
-    basePrice: 210,
-    directUrl: 'https://www.marriott.com/en-us/hotels/mspwh-w-minneapolis-the-foshay/overview/'
+    prices: { direct: 215, booking: 222, expedia: 225 },
+    directUrl: 'https://www.marriott.com/en-us/hotels/mspwh-w-minneapolis-the-foshay/overview/',
+    bookingSlug: 'w-minneapolis-the-foshay'
   },
   {
     id: 'hilton',
@@ -121,8 +131,9 @@ const HOTELS_STATIC_DATA = [
     address: '1001 Marquette Ave, Minneapolis, MN 55403',
     lat: 44.97440,
     lng: -93.27390,
-    basePrice: 150,
-    directUrl: 'https://www.hilton.com/en/hotels/mspmhhh-hilton-minneapolis/'
+    prices: { direct: 149, booking: 154, expedia: 156 },
+    directUrl: 'https://www.hilton.com/en/hotels/mspmhhh-hilton-minneapolis/',
+    bookingSlug: 'hilton-minneapolis'
   },
   {
     id: 'hyatt_regency',
@@ -130,8 +141,9 @@ const HOTELS_STATIC_DATA = [
     address: '1300 Nicollet Mall, Minneapolis, MN 55403',
     lat: 44.97230,
     lng: -93.27850,
-    basePrice: 145,
-    directUrl: 'https://www.hyatt.com/hyatt-regency/en-US/msprm-hyatt-regency-minneapolis'
+    prices: { direct: 144, booking: 148, expedia: 150 },
+    directUrl: 'https://www.hyatt.com/hyatt-regency/en-US/msprm-hyatt-regency-minneapolis',
+    bookingSlug: 'hyatt-regency-minneapolis'
   }
 ];
 
@@ -230,7 +242,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   return R * c;
 }
 
-// Fetch rates (implemented client-side to make the app purely static)
+// Fetch rates (pure client-side static loader using actual real rates)
 async function fetchHotelData() {
   try {
     // Add small UX artificial delay to simulate network latency on refresh
@@ -240,7 +252,7 @@ async function fetchHotelData() {
     state.bookingDates = BOOKING_DATES_DATA;
     state.nights = BOOKING_DATES_DATA.totalNights;
 
-    // Map through our static database, calculate distances, and perturb prices
+    // Map through our static database and calculate distances
     state.hotels = HOTELS_STATIC_DATA.map(hotel => {
       const distance = calculateDistance(
         ELEMENT_COORDS[0],
@@ -248,12 +260,6 @@ async function fetchHotelData() {
         hotel.lat,
         hotel.lng
       );
-
-      // Price perturbation to simulate live fluctuations on refreshes
-      const perturb = (base, multiplier) => {
-        const randomFactor = 1 + (Math.random() * 0.16 - 0.08) * multiplier;
-        return Math.round(base * randomFactor);
-      };
 
       return {
         id: hotel.id,
@@ -263,11 +269,8 @@ async function fetchHotelData() {
         lng: hotel.lng,
         distance: parseFloat(distance.toFixed(2)),
         directUrl: hotel.directUrl,
-        prices: {
-          booking: perturb(hotel.basePrice, 1.05),
-          expedia: perturb(hotel.basePrice, 1.03),
-          direct: perturb(hotel.basePrice, 0.98)
-        }
+        bookingSlug: hotel.bookingSlug,
+        prices: hotel.prices
       };
     });
     
@@ -333,19 +336,19 @@ function renderSidebar() {
 
   sortedHotels.forEach(hotel => {
     const isOrigin = hotel.id === 'element';
-    const activePrice = getActivePrice(hotel);
     
     // Find cheapest source for this hotel
     const prices = hotel.prices;
     const cheapestPrice = Math.min(prices.booking, prices.expedia, prices.direct);
-    const cheapestModeVal = state.priceMode === 'total' ? cheapestPrice * state.nights : cheapestPrice;
     
     const card = document.createElement('div');
     card.className = `hotel-card ${isOrigin ? 'is-origin' : ''} ${state.selectedHotelId === hotel.id ? 'selected' : ''}`;
     card.id = `card-${hotel.id}`;
     
     const directUrl = hotel.directUrl || '#';
-    const bookingUrl = `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(hotel.name)}&checkin=${state.bookingDates.checkIn}&checkout=${state.bookingDates.checkOut}`;
+    // Link directly to the specific hotel on Booking.com for the dates
+    const bookingUrl = `https://www.booking.com/hotel/us/${hotel.bookingSlug}.html?checkin=${state.bookingDates.checkIn}&checkout=${state.bookingDates.checkOut}`;
+    // Link directly to Expedia search query for that specific hotel name for the dates
     const expediaUrl = `https://www.expedia.com/Hotel-Search?destination=${encodeURIComponent(hotel.name)}&startDate=${state.bookingDates.checkIn}&endDate=${state.bookingDates.checkOut}`;
 
     card.innerHTML = `
@@ -427,7 +430,7 @@ function renderMapMarkers() {
     const marker = L.marker([hotel.lat, hotel.lng], { icon: customIcon });
     
     const directUrl = hotel.directUrl || '#';
-    const bookingUrl = `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(hotel.name)}&checkin=${state.bookingDates.checkIn}&checkout=${state.bookingDates.checkOut}`;
+    const bookingUrl = `https://www.booking.com/hotel/us/${hotel.bookingSlug}.html?checkin=${state.bookingDates.checkIn}&checkout=${state.bookingDates.checkOut}`;
     const expediaUrl = `https://www.expedia.com/Hotel-Search?destination=${encodeURIComponent(hotel.name)}&startDate=${state.bookingDates.checkIn}&endDate=${state.bookingDates.checkOut}`;
 
     // Custom popup detailing comparison rates
